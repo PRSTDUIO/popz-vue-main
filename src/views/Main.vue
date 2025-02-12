@@ -5,7 +5,7 @@
         <img src="../assets/S__13164569.jpg" alt="popup" class="w-[100%]" />
       </div>
       <form method="dialog" class="modal-backdrop">
-        
+
         <button>close</button>
       </form>
     </dialog> -->
@@ -615,7 +615,7 @@ onMounted(async () => {
     contentJson.value = response.data.content.rendered
     HeadJson.value = response.data.yoast_head_json
 
-    useSeoMeta(HeadJson.value)
+    useSeoMeta(JSON.parse(HeadJson.value))
     // useHead({
     //   title: HeadJson.value.title,
     //   meta: [
