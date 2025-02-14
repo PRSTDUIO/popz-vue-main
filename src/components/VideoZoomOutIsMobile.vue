@@ -5,8 +5,6 @@
         class="hero-video"
         autoplay="autoplay"
         loop="loop"
-        muted
-        defualtMuted
         playsinline
       >
         <source src="../assets/Mobile.mp4" type="video/mp4" />
