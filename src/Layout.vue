@@ -54,7 +54,7 @@
           </div>
         </div>
       </div> -->
-      <a href="https://line.me/R/ti/p/@popslot">
+      <a href="https://lin.ee/lKFxrRW">
         <img src="./assets/line.webp" class="w-[30px] lg:w-[40px]"/>
       </a>
       <button
