@@ -7,7 +7,7 @@
         loop="loop"
         playsinline
       >
-        <source src="../assets/Mobile.mp4" type="video/mp4" />
+        <source src="../assets/PIGSPIN360x493.mp4" type="video/mp4" />
       </video>
       <div class="hero-image"></div>
       <div class="hero-text">

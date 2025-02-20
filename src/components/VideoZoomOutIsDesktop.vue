@@ -7,7 +7,7 @@
         loop="loop"
         playsinline
       >
-        <source src="../assets/Desktop.mp4" type="video/mp4" />
+        <source src="../assets/video_1.mp4" type="video/mp4" />
       </video>
       <div class="hero-image"></div>
       <div class="hero-text">
