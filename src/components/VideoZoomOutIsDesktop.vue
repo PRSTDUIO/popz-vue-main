@@ -1,12 +1,7 @@
 <template>
   <div class="hero">
     <div class="hero-media">
-      <video
-        class="hero-video"
-        autoplay="autoplay"
-        loop="loop"
-        playsinline
-      >
+      <video class="hero-video" autoplay="autoplay" loop="loop" muted playsinline>
         <source src="../assets/video_1.mp4" type="video/mp4" />
       </video>
       <div class="hero-image"></div>
@@ -25,29 +20,29 @@
   </div>
 </template>
 <script setup>
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ref, onMounted, onBeforeUnmount } from "vue";
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 onMounted(() => {
-  gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollTrigger)
 
-  const tl = gsap.timeline();
+  const tl = gsap.timeline()
 
-  tl.to(".hero-video, .hero-image", {
+  tl.to('.hero-video, .hero-image', {
     scale: 1, // Adjust the scale value for your desired zoom-out effect
     duration: 5, // Adjust the duration of the zoom-out effect
-    transformOrigin: "center center",
-  });
+    transformOrigin: 'center center'
+  })
 
   // Define the scroll range where the zoom-out effect occurs
   ScrollTrigger.create({
     animation: tl,
-    trigger: ".hero",
-    start: "top top",
-    end: "center top", // Adjust the scroll range as needed
+    trigger: '.hero',
+    start: 'top top',
+    end: 'center top', // Adjust the scroll range as needed
     scrub: true,
-    pin: true, // Pin the content in the centered state
-  });
+    pin: true // Pin the content in the centered state
+  })
 
   // Keep the content in the zoomed-out state for a specific scroll range
   // ScrollTrigger.create({
@@ -58,18 +53,18 @@ onMounted(() => {
   //   pin: true, // Pin the content in the centered state
   // });
 
-  gsap.set(".hero-text", { opacity: 1 }); // Set the initial opacity to 1
+  gsap.set('.hero-text', { opacity: 1 }) // Set the initial opacity to 1
 
   // Create a ScrollTrigger for the text to gradually disappear
   ScrollTrigger.create({
     // Trigger the fade-out animation when hero section is at the center of the viewport
-    animation: gsap.to(".hero-text", { opacity: 0 }),
-    trigger: ".hero",
-    start: "top+=450 center",
-    end: "center top", // Adjust the scroll range for the text to fully disappear
-    scrub: true,
-  });
-});
+    animation: gsap.to('.hero-text', { opacity: 0 }),
+    trigger: '.hero',
+    start: 'top+=450 center',
+    end: 'center top', // Adjust the scroll range for the text to fully disappear
+    scrub: true
+  })
+})
 </script>
 
 <style scoped>
@@ -101,7 +96,7 @@ onMounted(() => {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-image: url("https://pigspin.asia/images/mobile-frame/phone-tablet-desktop.png");
+  background-image: url('https://pigspin.asia/images/mobile-frame/phone-tablet-desktop.png');
   background-size: cover;
   background-position: center;
   transform: scale(3); /* Initial scale */

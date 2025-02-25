@@ -1,12 +1,7 @@
 <template>
   <div class="hero">
     <div class="hero-media">
-      <video
-        class="hero-video"
-        autoplay="autoplay"
-        loop="loop"
-        playsinline
-      >
+      <video class="hero-video" autoplay="autoplay" loop="loop" muted playsinline>
         <source src="../assets/PIGSPIN360x493.mp4" type="video/mp4" />
       </video>
       <div class="hero-image"></div>
@@ -26,41 +21,41 @@
   </div>
 </template>
 <script setup>
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ref, onMounted, onBeforeUnmount } from "vue";
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 onMounted(() => {
-  gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollTrigger)
 
-  const tl = gsap.timeline();
+  const tl = gsap.timeline()
 
-  tl.to(".hero-video, .hero-image", {
+  tl.to('.hero-video, .hero-image', {
     scale: 1, // Adjust the scale value for your desired zoom-out effect
     duration: 2, // Adjust the duration of the zoom-out effect
-    transformOrigin: "center center",
-  });
+    transformOrigin: 'center center'
+  })
 
   // Define the scroll range where the zoom-out effect occurs
   ScrollTrigger.create({
     animation: tl,
-    trigger: ".hero",
-    start: "top top",
-    end: "center top", // Adjust the scroll range as needed
+    trigger: '.hero',
+    start: 'top top',
+    end: 'center top', // Adjust the scroll range as needed
     scrub: true,
-    pin: true, // Pin the content in the centered state
-  });
+    pin: true // Pin the content in the centered state
+  })
 
-  gsap.set(".hero-text", { opacity: 1 }); // Set the initial opacity to 1
+  gsap.set('.hero-text', { opacity: 1 }) // Set the initial opacity to 1
 
   // Create a ScrollTrigger for the text to gradually disappear
   ScrollTrigger.create({
     // Trigger the fade-out animation when hero section is at the center of the viewport
-    animation: gsap.to(".hero-text", { opacity: 0 }),
-    trigger: ".hero",
-    start: "top+=400 center",
-    end: "center top", // Adjust the scroll range for the text to fully disappear
-    scrub: true,
-  });
+    animation: gsap.to('.hero-text', { opacity: 0 }),
+    trigger: '.hero',
+    start: 'top+=400 center',
+    end: 'center top', // Adjust the scroll range for the text to fully disappear
+    scrub: true
+  })
 
   // Keep the content in the zoomed-out state for a specific scroll range
   // ScrollTrigger.create({
@@ -70,12 +65,12 @@ onMounted(() => {
   //   scrub: false,
   //   pin: true, // Pin the content in the centered state
   // });
-});
+})
 </script>
 
 <style scoped>
 .hero {
-  content: "";
+  content: '';
   position: relative;
   height: 100vh;
   overflow: hidden;
@@ -98,13 +93,13 @@ onMounted(() => {
 }
 
 .hero-image {
-  content: "";
+  content: '';
   /* position: absolute; */
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-image: url("https://pigspin.asia/images/mobile-frame/phone-mobile-cut.png");
+  background-image: url('https://pigspin.asia/images/mobile-frame/phone-mobile-cut.png');
   background-size: cover;
   background-position: center;
   transform: scale(4.5); /* Initial scale */
