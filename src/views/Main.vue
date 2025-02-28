@@ -555,6 +555,7 @@ import InfiniteSlideBar from 'vue3-infinite-slide-bar'
 import axios from 'axios'
 import { useSeoMeta } from '@vueuse/head'
 import { useRouter } from 'vue-router'
+
 const router = useRouter()
 
 const posts = reactive([])
@@ -563,8 +564,11 @@ const contentJson = ref('')
 const HeadJson = ref('')
 
 // useHead({
-//   title: 'My awesome site'
-// })
+//   title: 'My Nuxt Site',
+//   meta: [
+//     { name: 'description', content: 'เว็บไซต์ตัวอย่าง Nuxt.js' }
+//   ]
+// });
 
 const SelectArticel = (item) => {
   router.push({
