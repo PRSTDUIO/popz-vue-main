@@ -36,11 +36,11 @@ onMounted(async () => {
 
     // ตั้งค่า SEO โดยใช้ข้อมูลจาก Yoast SEO
     useHead({
-      title: state.Post?.yoast_head_json?.title || state.Post?.title?.rendered || 'Default Title',
+      title: state.Post?.yoast_head_json?.title || state.Post?.title?.rendered || 'เว็บสล็อตออนไลน์ ที่มาแรงที่สุด ติดอันดับในไทยตอนนี้ - POPSLOT',
       meta: [
         {
           name: 'description',
-          content: state.Post?.yoast_head_json?.description || 'Default Description'
+          content: state.Post?.yoast_head_json?.description || 'POPSLOT รวมเกมสล็อตหลากหลายค่าย Spinix Pg Pragmatic Amb รวมไว้ที่เว็บเดียว สมัครสมาชิกใหม่รับโบนัสฟรี ฝากถอนด้วยระบบ Auto สะดวกรวดเร็ว'
         },
         { property: 'og:title', content: state.Post?.yoast_head_json?.og_title || '' },
         { property: 'og:description', content: state.Post?.yoast_head_json?.og_description || '' },
