@@ -13,8 +13,9 @@
   </div>
 </template>
 <script setup>
-import { reactive, onMounted, ref } from 'vue'
-import axios from 'axios'
+import { reactive, onMounted, ref } from 'vue';
+import axios from 'axios';
+import { useHead } from '#imports';
 
 const state = reactive({
   Img: null,
@@ -24,31 +25,33 @@ const state = reactive({
 const props = defineProps(['Id'])
 
 onMounted(async () => {
-  await axios
-    .get(`https://admin.popslot.me/wp-json/wp/v2/posts/${props.Id}?_embed`)
-    .then((response) => {
-      state.Post = response.data
-      try {
-        state.Img = state.Post._embedded['wp:featuredmedia'][0]?.source_url
-      } catch (error) {
-        state.Img = null
-      }
-      state.isShow = true
-      //   for (const data of response.data) {
-      //     if (data._embedded['wp:featuredmedia']) {
-      //       posts.push({
-      //         ...data,
-      //         url_img: data._embedded['wp:featuredmedia'][0]?.source_url
-      //       })
-      //     } else {
-      //       posts.push({
-      //         ...data,
-      //         url_img: null
-      //       })
-      //     }
-      //   }
+  try {
+    const response = await axios.get(
+      `https://admin.popslot.me/wp-json/wp/v2/posts/${props.Id}?_embed`
+    )
+    state.Post = response.data
+
+    // ดึงรูปภาพเด่น (Featured Image)
+    state.Img = state.Post?._embedded?.['wp:featuredmedia']?.[0]?.source_url || null
+
+    // ตั้งค่า SEO โดยใช้ข้อมูลจาก Yoast SEO
+    useHead({
+      title: state.Post?.yoast_head_json?.title || state.Post?.title?.rendered || 'Default Title',
+      meta: [
+        {
+          name: 'description',
+          content: state.Post?.yoast_head_json?.description || 'Default Description'
+        },
+        { property: 'og:title', content: state.Post?.yoast_head_json?.og_title || '' },
+        { property: 'og:description', content: state.Post?.yoast_head_json?.og_description || '' },
+        { property: 'og:image', content: state.Post?.yoast_head_json?.og_image?.[0]?.url || '' }
+      ]
     })
+
+    state.isShow = true
+  } catch (error) {
+    console.error('Error fetching post:', error)
+  }
 })
 </script>
-<style>
-</style>
+<style></style>
